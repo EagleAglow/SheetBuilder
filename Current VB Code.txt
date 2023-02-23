@@ -1,0 +1,1356 @@
+Sub ImportFLagData()
+Dim wb As Workbook
+Set wb = Workbooks.Open("S:\Web Site Files\Flags\State Flags\Presentation Sets\State Flag Presentation Set Worksheet.xlsx")
+Dim ws As Worksheet
+Set ws = wb.Worksheets("Sheet1")
+Dim range As range
+Set range = ws.range("A3:EM57")
+Dim newwb As Workbook
+Set newwb = Workbooks.Add
+newwb.SaveAs ("S:\Web Site Files\Flags\State Flags\Presentation Sets\VBA\Test1")
+Dim ns As Worksheet
+Set ns = newwb.ActiveSheet
+    ' Header Row
+    ns.Cells(1, 1) = "Item Type"
+    ns.Cells(1, 2) = "Product ID"
+    ns.Cells(1, 3) = "Sort Order"
+    ns.Cells(1, 4) = "Product Name"
+    ns.Cells(1, 5) = "Product Type"
+    ns.Cells(1, 6) = "Product Code/SKU"
+    ns.Cells(1, 7) = "Bin Picking Number"
+    ns.Cells(1, 8) = "Origin Locations"
+    ns.Cells(1, 9) = "Shipping Groups"
+    ns.Cells(1, 10) = "Dimensional Rules"
+    ns.Cells(1, 11) = "Brand Name"
+    ns.Cells(1, 12) = "Option Set"
+    ns.Cells(1, 13) = "Option Set Align"
+    ns.Cells(1, 14) = "Product Description"
+    ns.Cells(1, 15) = "Price"
+    ns.Cells(1, 16) = "Cost Price"
+    ns.Cells(1, 17) = "Retail Price"
+    ns.Cells(1, 18) = "Sale Price"
+    ns.Cells(1, 19) = "Fixed Shipping Cost"
+    ns.Cells(1, 20) = "Free Shipping"
+    ns.Cells(1, 21) = "Product Warranty"
+    ns.Cells(1, 22) = "Product Weight"
+    ns.Cells(1, 23) = "Product Width"
+    ns.Cells(1, 24) = "Product Height"
+    ns.Cells(1, 25) = "Product Depth"
+    ns.Cells(1, 26) = "Allow Purchases?"
+    ns.Cells(1, 27) = "Product Visible?"
+    ns.Cells(1, 28) = "Product Availability"
+    ns.Cells(1, 29) = "Track Inventory"
+    ns.Cells(1, 30) = "Current Stock Level"
+    ns.Cells(1, 31) = "Low Stock Level"
+    ns.Cells(1, 32) = "Category"
+    ns.Cells(1, 33) = "Product Image File - 1"
+    ns.Cells(1, 34) = "Product Image URL - 1"
+    ns.Cells(1, 35) = "Product Image ID - 1"
+    ns.Cells(1, 36) = "Product Image File - 1"
+    ns.Cells(1, 37) = "Product Image Description - 1"
+    ns.Cells(1, 38) = "Product Image Is Thumbnail - 1"
+    ns.Cells(1, 39) = "Product Image Sort - 1"
+    ns.Cells(1, 40) = "Product Image File - 2"
+    ns.Cells(1, 41) = "Product Image URL - 2"
+    ns.Cells(1, 42) = "Product Image ID - 2"
+    ns.Cells(1, 43) = "Product Image File - 2"
+    ns.Cells(1, 44) = "Product Image Description - 2"
+    ns.Cells(1, 45) = "Product Image Is Thumbnail - 2"
+    ns.Cells(1, 46) = "Product Image Sort - 2"
+    ns.Cells(1, 47) = "Product Image File - 3"
+    ns.Cells(1, 48) = "Product Image URL - 3"
+    ns.Cells(1, 49) = "Product Image ID - 3"
+    ns.Cells(1, 50) = "Product Image File - 3"
+    ns.Cells(1, 51) = "Product Image Description - 3"
+    ns.Cells(1, 52) = "Product Image Is Thumbnail - 3"
+    ns.Cells(1, 53) = "Product Image Sort - 3"
+    ns.Cells(1, 54) = "Search Keywords"
+    ns.Cells(1, 55) = "Page Title"
+    ns.Cells(1, 56) = "Meta Keywords"
+    ns.Cells(1, 57) = "Meta Description"
+    ns.Cells(1, 58) = "Product Condition"
+    ns.Cells(1, 59) = "Show Product Condition?"
+    ns.Cells(1, 60) = "Product Tax Class"
+    ns.Cells(1, 61) = "Manufacturer Part Number"
+    ns.Cells(1, 62) = "Product UPC/EAN"
+    ns.Cells(1, 63) = "Product URL"
+    ns.Cells(1, 64) = "Redirect Old URL?"
+    ns.Cells(1, 65) = "GPS Global Trade Item Number"
+    ns.Cells(1, 66) = "GPS Color"
+    ns.Cells(1, 67) = "GPS Item Group ID"
+    ns.Cells(1, 68) = "GPS Category"
+    ns.Cells(1, 69) = "Product Custom Fields"
+    'continue
+       
+    
+For i = 1 To range.Rows.Count
+' range.Rows.Count
+    ' Debug.Print (range.Cells(i, 1))
+    Dim ra As Integer
+    ra = (i - 1) * 18
+    ' create new file
+    Dim state As String
+    state = range.Cells(i, 1)
+    Dim statecode As String
+    statecode = range.Cells(i, 2)
+    Dim FZNo As String
+    FZNo = range.Cells(i, 3)
+    Dim FZClass As String
+    FZClass = range.Cells(i, 4)
+    Dim FZ3X5PHPN As String
+    FZ3X5PHPN = range.Cells(i, 5)
+    Dim FZ3X5PHPrice As String
+    FZ3X5PHPrice = range.Cells(i, 6)
+    Dim FZ3X5PHFPN As String
+    FZ3X5PHFPN = range.Cells(i, 7)
+    Dim FZ3X5PHFPrice As String
+    FZ3X5PHFPrice = range.Cells(i, 8)
+    Dim FZ4X6PHPN As String
+    FZ4X6PHPN = range.Cells(i, 9)
+    Dim FZ4X6PHPrice As String
+    FZ4X6PHPrice = range.Cells(i, 10)
+    Dim FZ4X6PHFPN As String
+    FZ4X6PHFPN = range.Cells(i, 11)
+    Dim FZ4X6PHFPrice As String
+    FZ4X6PHFPrice = range.Cells(i, 12)
+    Dim FZ7FtHWPN As String
+    FZ7FtHWPN = range.Cells(i, 13)
+    Dim FZ7FtHWPrice As String
+    FZ7FtHWPrice = range.Cells(i, 14)
+    Dim FZ8FtHWPN As String
+    FZ8FtHWPN = range.Cells(i, 15)
+    Dim FZ8FtHWPrice As String
+    FZ8FtHWPrice = range.Cells(i, 16)
+    Dim FZ9FtHWPN As String
+    FZ9FtHWPN = range.Cells(i, 17)
+    Dim FZ9FtHWPrice As String
+    FZ9FtHWPrice = range.Cells(i, 18)
+    Dim BaseSKU As String
+    BaseSKU = range.Cells(i, 19)
+    Dim PRSETPH357SKU As String
+    PRSETPH357SKU = range.Cells(i, 20)
+    Dim PRSETPH357Cost As String
+    PRSETPH357Cost = range.Cells(i, 21)
+    Dim PRSETPH357Price As String
+    PRSETPH357Price = range.Cells(i, 22)
+    Dim PRSETPH357MPN As String
+    PRSETPH357MPN = range.Cells(i, 23)
+    Dim PRSETPHF357SKU As String
+    PRSETPHF357SKU = range.Cells(i, 24)
+    Dim PRSETPHF357Cost As String
+    PRSETPHF357Cost = range.Cells(i, 25)
+    Dim PRSETPHF357Price As String
+    PRSETPHF357Price = range.Cells(i, 26)
+    Dim PRSETPHF357MPN As String
+    PRSETPHF357MPN = range.Cells(i, 27)
+    Dim PRSETPH358SKU As String
+    PRSETPH358SKU = range.Cells(i, 28)
+    Dim PRSETPH358Cost As String
+    PRSETPH358Cost = range.Cells(i, 29)
+    Dim PRSETPH358Price As String
+    PRSETPH358Price = range.Cells(i, 30)
+    Dim PRSETPH358MPN As String
+    PRSETPH358MPN = range.Cells(i, 31)
+    Dim PRSETPHF358SKU As String
+    PRSETPHF358SKU = range.Cells(i, 32)
+    Dim PRSETPHF358Cost As String
+    PRSETPHF358Cost = range.Cells(i, 33)
+    Dim PRSETPHF358Price As String
+    PRSETPHF358Price = range.Cells(i, 34)
+    Dim PRSETPHF358MPN As String
+    PRSETPHF358MPN = range.Cells(i, 35)
+    Dim PRSETPH469SKU As String
+    PRSETPH469SKU = range.Cells(i, 36)
+    Dim PRSETPH469Cost As String
+    PRSETPH469Cost = range.Cells(i, 37)
+    Dim PRSETPH469Price As String
+    PRSETPH469Price = range.Cells(i, 38)
+    Dim PRSETPH469MPN As String
+    PRSETPH469MPN = range.Cells(i, 39)
+    Dim PRSETPHF469SKU As String
+    PRSETPHF469SKU = range.Cells(i, 40)
+    Dim PRSETPHF469Cost As String
+    PRSETPHF469Cost = range.Cells(i, 41)
+    Dim PRSETPHF469Price As String
+    PRSETPHF469Price = range.Cells(i, 42)
+    Dim PRSETPHF469MPN As String
+    PRSETPHF469MPN = range.Cells(i, 43)
+    Dim PRSETPHImage As String
+    PRSETPHImage = range.Cells(i, 44)
+    Dim PRSETPHFImage As String
+    PRSETPHFImage = range.Cells(i, 45)
+    Dim PHFFlagImage As String
+    PHFFlagImage = range.Cells(i, 46)
+    Dim HWImage As String
+    HWImage = range.Cells(i, 47)
+    Dim ImageDesc As String
+    ImageDesc = range.Cells(i, 48)
+    Dim PageTitle As String
+    PageTitle = range.Cells(i, 49)
+    Dim Category As String
+    Category = range.Cells(i, 50)
+Call ProductRow
+Call FlagSKUs
+Call FlagSKURules
+    newwb.Save
+Next
+End Sub
+Sub ProductRow()
+    Dim ns As Worksheet
+    Set ns = ActiveSheet
+    Dim range As range
+    Set range = ws.range("A3:EM57")
+    For i = 1 To range.Rows.Count
+    ' range.Rows.Count
+    ' Debug.Print (range.Cells(i, 1))
+    Dim ra As Integer
+    ra = (i - 1) * 18
+    ' create new file
+    Dim state As String
+    state = range.Cells(i, 1)
+    Dim statecode As String
+    statecode = range.Cells(i, 2)
+    Dim FZNo As String
+    FZNo = range.Cells(i, 3)
+    Dim FZClass As String
+    FZClass = range.Cells(i, 4)
+    Dim FZ3X5PHPN As String
+    FZ3X5PHPN = range.Cells(i, 5)
+    Dim FZ3X5PHPrice As String
+    FZ3X5PHPrice = range.Cells(i, 6)
+    Dim FZ3X5PHFPN As String
+    FZ3X5PHFPN = range.Cells(i, 7)
+    Dim FZ3X5PHFPrice As String
+    FZ3X5PHFPrice = range.Cells(i, 8)
+    Dim FZ4X6PHPN As String
+    FZ4X6PHPN = range.Cells(i, 9)
+    Dim FZ4X6PHPrice As String
+    FZ4X6PHPrice = range.Cells(i, 10)
+    Dim FZ4X6PHFPN As String
+    FZ4X6PHFPN = range.Cells(i, 11)
+    Dim FZ4X6PHFPrice As String
+    FZ4X6PHFPrice = range.Cells(i, 12)
+    Dim FZ7FtHWPN As String
+    FZ7FtHWPN = range.Cells(i, 13)
+    Dim FZ7FtHWPrice As String
+    FZ7FtHWPrice = range.Cells(i, 14)
+    Dim FZ8FtHWPN As String
+    FZ8FtHWPN = range.Cells(i, 15)
+    Dim FZ8FtHWPrice As String
+    FZ8FtHWPrice = range.Cells(i, 16)
+    Dim FZ9FtHWPN As String
+    FZ9FtHWPN = range.Cells(i, 17)
+    Dim FZ9FtHWPrice As String
+    FZ9FtHWPrice = range.Cells(i, 18)
+    Dim BaseSKU As String
+    BaseSKU = range.Cells(i, 19)
+    Dim PRSETPH357SKU As String
+    PRSETPH357SKU = range.Cells(i, 20)
+    Dim PRSETPH357Cost As String
+    PRSETPH357Cost = range.Cells(i, 21)
+    Dim PRSETPH357Price As String
+    PRSETPH357Price = range.Cells(i, 22)
+    Dim PRSETPH357MPN As String
+    PRSETPH357MPN = range.Cells(i, 23)
+    Dim PRSETPHF357SKU As String
+    PRSETPHF357SKU = range.Cells(i, 24)
+    Dim PRSETPHF357Cost As String
+    PRSETPHF357Cost = range.Cells(i, 25)
+    Dim PRSETPHF357Price As String
+    PRSETPHF357Price = range.Cells(i, 26)
+    Dim PRSETPHF357MPN As String
+    PRSETPHF357MPN = range.Cells(i, 27)
+    Dim PRSETPH358SKU As String
+    PRSETPH358SKU = range.Cells(i, 28)
+    Dim PRSETPH358Cost As String
+    PRSETPH358Cost = range.Cells(i, 29)
+    Dim PRSETPH358Price As String
+    PRSETPH358Price = range.Cells(i, 30)
+    Dim PRSETPH358MPN As String
+    PRSETPH358MPN = range.Cells(i, 31)
+    Dim PRSETPHF358SKU As String
+    PRSETPHF358SKU = range.Cells(i, 32)
+    Dim PRSETPHF358Cost As String
+    PRSETPHF358Cost = range.Cells(i, 33)
+    Dim PRSETPHF358Price As String
+    PRSETPHF358Price = range.Cells(i, 34)
+    Dim PRSETPHF358MPN As String
+    PRSETPHF358MPN = range.Cells(i, 35)
+    Dim PRSETPH469SKU As String
+    PRSETPH469SKU = range.Cells(i, 36)
+    Dim PRSETPH469Cost As String
+    PRSETPH469Cost = range.Cells(i, 37)
+    Dim PRSETPH469Price As String
+    PRSETPH469Price = range.Cells(i, 38)
+    Dim PRSETPH469MPN As String
+    PRSETPH469MPN = range.Cells(i, 39)
+    Dim PRSETPHF469SKU As String
+    PRSETPHF469SKU = range.Cells(i, 40)
+    Dim PRSETPHF469Cost As String
+    PRSETPHF469Cost = range.Cells(i, 41)
+    Dim PRSETPHF469Price As String
+    PRSETPHF469Price = range.Cells(i, 42)
+    Dim PRSETPHF469MPN As String
+    PRSETPHF469MPN = range.Cells(i, 43)
+    Dim PRSETPHImage As String
+    PRSETPHImage = range.Cells(i, 44)
+    Dim PRSETPHFImage As String
+    PRSETPHFImage = range.Cells(i, 45)
+    Dim PHFFlagImage As String
+    PHFFlagImage = range.Cells(i, 46)
+    Dim HWImage As String
+    HWImage = range.Cells(i, 47)
+    Dim ImageDesc As String
+    ImageDesc = range.Cells(i, 48)
+    Dim PageTitle As String
+    PageTitle = range.Cells(i, 49)
+    Dim Category As String
+    Category = range.Cells(i, 50
+    'Dim newwb As Workbook
+    'Set newwb = Workbooks.Add
+    ' newwb.SaveAs ("S:\Web Site Files\Flags\International\Presentation Sets\VBA Output\" + (range.Cells(i, 1)))
+    'Outdoor Nylon Flags
+    'Outdoor Nylon Flags product row 2
+    ns.Cells(ra + 2, 1) = "Product"
+    ns.Cells(ra + 2, 2) = ""
+    ns.Cells(ra + 2, 3) = "0"
+    ns.Cells(ra + 2, 4) = state + " Deluxe Indoor Presentation Set with Oak Pole, Gold Base and Hardware (Open Market)"
+    ns.Cells(ra + 2, 5) = "P"
+    ns.Cells(ra + 2, 6) = BaseSKU
+    ns.Cells(ra + 2, 7) = ""
+    ns.Cells(ra + 2, 8) = ""
+    ns.Cells(ra + 2, 9) = ""
+    ns.Cells(ra + 2, 10) = ""
+    ns.Cells(ra + 2, 11) = ""
+    ns.Cells(ra + 2, 12) = "Oak Presentation Set Options"
+    ns.Cells(ra + 2, 13) = "Right"
+    ns.Cells(ra + 2, 14) = ""
+    ns.Cells(ra + 2, 15) = "0.00"
+    ns.Cells(ra + 2, 16) = "0.00"
+    ns.Cells(ra + 2, 17) = "0.00"
+    ns.Cells(ra + 2, 18) = "0.00"
+    ns.Cells(ra + 2, 19) = "0"
+    ns.Cells(ra + 2, 20) = "N"
+    ns.Cells(ra + 2, 21) = ""
+    ns.Cells(ra + 2, 22) = "25"
+    ns.Cells(ra + 2, 23) = "53"
+    ns.Cells(ra + 2, 24) = "13"
+    ns.Cells(ra + 2, 25) = "6"
+    ns.Cells(ra + 2, 26) = "Y"
+    ns.Cells(ra + 2, 27) = "Y"
+    ns.Cells(ra + 2, 28) = ""
+    ns.Cells(ra + 2, 29) = "none"
+    ns.Cells(ra + 2, 30) = "0"
+    ns.Cells(ra + 2, 31) = "0"
+    ns.Cells(ra + 2, 32) = "Flags/State & U.S. Territory Flags/" + state + " Flags/Indoor" + state + " Flags;Flagpoles/Indoor Flagpoles/Presentation Flagpole Sets/State Indoor & Parade Set"
+    ns.Cells(ra + 2, 33) = "https://emflag.com/content/Flags/State/Indoor/Presentation%20Sets/PRSET-" + state + "-PHF.png"
+    ns.Cells(ra + 2, 34) = "https://emflag.com/content/Flags/State/Indoor/Presentation%20Sets/PRSET-" + state + "-PHF.png"
+    ns.Cells(ra + 2, 35) = ""
+    ns.Cells(ra + 2, 36) = ""
+    ns.Cells(ra + 2, 37) = "Deluxe Indoor and Parade " + state + "Flag Presentation Set"
+    ns.Cells(ra + 2, 38) = "Y"
+    ns.Cells(ra + 2, 39) = "1"
+    ns.Cells(ra + 2, 40) = ""
+    ns.Cells(ra + 2, 41) = ""
+    ns.Cells(ra + 2, 42) = ""
+    ns.Cells(ra + 2, 43) = ""
+    ns.Cells(ra + 2, 44) = ""
+    ns.Cells(ra + 2, 45) = ""
+    ns.Cells(ra + 2, 46) = ""
+    ns.Cells(ra + 2, 47) = ""
+    ns.Cells(ra + 2, 48) = ""
+    ns.Cells(ra + 2, 49) = ""
+    ns.Cells(ra + 2, 50) = ""
+    ns.Cells(ra + 2, 51) = ""
+    ns.Cells(ra + 2, 52) = ""
+    ns.Cells(ra + 2, 53) = ""
+    ns.Cells(ra + 2, 54) = "Deluxe Indoor and Parade " + state + "Flag Presentation Set"
+    ns.Cells(ra + 2, 55) = "Shop " + state + " Indoor and Parade Presentation Set - Made in USA"
+    ns.Cells(ra + 2, 56) = "Meta Keywords"
+    ns.Cells(ra + 2, 57) = "Meta Description"
+    ns.Cells(ra + 2, 58) = "New"
+    ns.Cells(ra + 2, 59) = "N"
+    ns.Cells(ra + 2, 60) = "Default Tax Class"
+    ns.Cells(ra + 2, 61) = ""
+    ns.Cells(ra + 2, 62) = ""
+    ns.Cells(ra + 2, 63) = ""
+    ns.Cells(ra + 2, 64) = ""
+    ns.Cells(ra + 2, 65) = ""
+    ns.Cells(ra + 2, 66) = ""
+    ns.Cells(ra + 2, 67) = ""
+    ns.Cells(ra + 2, 68) = ""
+    ns.Cells(ra + 2, 69) = ""
+
+End Sub
+
+Sub FlagSKUs()
+Dim ns As Worksheet
+Set ns = ActiveSheet
+Dim range As range
+Set range = ws.range("A3:EM57")
+    '12inX18inHG SKU Row 3
+    ns.Cells(ra + 3, 1) = "SKU"
+    ns.Cells(ra + 3, 2) = ""
+    ns.Cells(ra + 3, 3) = ""
+    ns.Cells(ra + 3, 4) = "[RT]Finishing Options=Pole Hem Only,[RT]Flag and Pole Size=3' X 5' Flag with 7' Oak Pole"
+    ns.Cells(ra + 3, 5) = ""
+    ns.Cells(ra + 3, 6) = PRSETPH357SKU
+    ns.Cells(ra + 3, 7) = "FlagZone"
+    ns.Cells(ra + 3, 8) = "FlagZone"
+    ns.Cells(ra + 3, 9) = ""
+    ns.Cells(ra + 3, 10) = ""
+    ns.Cells(ra + 3, 11) = "FlagZone"
+    ns.Cells(ra + 3, 12) = ""
+    ns.Cells(ra + 3, 13) = ""
+    ns.Cells(ra + 3, 14) = ""
+    ns.Cells(ra + 3, 15) = ""
+    ns.Cells(ra + 3, 16) = PRSETPH357Cost
+    ns.Cells(ra + 3, 17) = ""
+    ns.Cells(ra + 3, 18) = ""
+    ns.Cells(ra + 3, 19) = ""
+    ns.Cells(ra + 3, 20) = "N"
+    ns.Cells(ra + 3, 21) = ""
+    ns.Cells(ra + 3, 22) = "18"
+    ns.Cells(ra + 3, 23) = "53"
+    ns.Cells(ra + 3, 24) = "13"
+    ns.Cells(ra + 3, 25) = "6"
+    ns.Cells(ra + 3, 26) = ""
+    ns.Cells(ra + 3, 27) = ""
+    ns.Cells(ra + 3, 28) = ""
+    ns.Cells(ra + 3, 29) = ""
+    ns.Cells(ra + 3, 30) = ""
+    ns.Cells(ra + 3, 31) = ""
+    ns.Cells(ra + 3, 32) = ""
+    ns.Cells(ra + 3, 33) = ""
+    ns.Cells(ra + 3, 34) = ""
+    ns.Cells(ra + 3, 35) = ""
+    ns.Cells(ra + 3, 36) = ""
+    ns.Cells(ra + 3, 37) = ""
+    ns.Cells(ra + 3, 38) = ""
+    ns.Cells(ra + 3, 39) = ""
+    ns.Cells(ra + 3, 40) = ""
+    ns.Cells(ra + 3, 41) = ""
+    ns.Cells(ra + 3, 42) = ""
+    ns.Cells(ra + 3, 43) = ""
+    ns.Cells(ra + 3, 44) = ""
+    ns.Cells(ra + 3, 45) = ""
+    ns.Cells(ra + 3, 46) = ""
+    ns.Cells(ra + 3, 47) = ""
+    ns.Cells(ra + 3, 48) = ""
+    ns.Cells(ra + 3, 49) = ""
+    ns.Cells(ra + 3, 50) = ""
+    ns.Cells(ra + 3, 51) = ""
+    ns.Cells(ra + 3, 52) = ""
+    ns.Cells(ra + 3, 53) = ""
+    ns.Cells(ra + 3, 54) = ""
+    ns.Cells(ra + 3, 55) = ""
+    ns.Cells(ra + 3, 56) = ""
+    ns.Cells(ra + 3, 57) = ""
+    ns.Cells(ra + 3, 58) = ""
+    ns.Cells(ra + 3, 59) = ""
+    ns.Cells(ra + 3, 60) = ""
+    ns.Cells(ra + 3, 61) = PRSETPH357MPN
+    ns.Cells(ra + 3, 62) = ""
+    ns.Cells(ra + 3, 63) = ""
+    ns.Cells(ra + 3, 64) = ""
+    ns.Cells(ra + 3, 65) = ""
+    ns.Cells(ra + 3, 66) = ""
+    ns.Cells(ra + 3, 67) = ""
+    ns.Cells(ra + 3, 68) = ""
+    ns.Cells(ra + 3, 69) = ""
+    
+    '2X3 HG SKU Row 4
+    ns.Cells(ra + 3, 1) = "SKU"
+    ns.Cells(ra + 3, 2) = ""
+    ns.Cells(ra + 3, 3) = ""
+    ns.Cells(ra + 3, 4) = "[RT]Finishing Options=Pole Hem & Fringe,[RT]Flag and Pole Size=3' X 5' Flag with 7' Oak Pole"
+    ns.Cells(ra + 3, 5) = ""
+    ns.Cells(ra + 3, 6) = PRSETPHF357SKU
+    ns.Cells(ra + 3, 7) = "FlagZone"
+    ns.Cells(ra + 3, 8) = "FlagZone"
+    ns.Cells(ra + 3, 9) = ""
+    ns.Cells(ra + 3, 10) = ""
+    ns.Cells(ra + 3, 11) = "FlagZone"
+    ns.Cells(ra + 3, 12) = ""
+    ns.Cells(ra + 3, 13) = ""
+    ns.Cells(ra + 3, 14) = ""
+    ns.Cells(ra + 3, 15) = ""
+    ns.Cells(ra + 3, 16) = PRSETPHF357Cost
+    ns.Cells(ra + 3, 17) = ""
+    ns.Cells(ra + 3, 18) = ""
+    ns.Cells(ra + 3, 19) = ""
+    ns.Cells(ra + 3, 20) = "N"
+    ns.Cells(ra + 3, 21) = ""
+    ns.Cells(ra + 3, 22) = "18"
+    ns.Cells(ra + 3, 23) = "53"
+    ns.Cells(ra + 3, 24) = "13"
+    ns.Cells(ra + 3, 25) = "6"
+    ns.Cells(ra + 3, 26) = ""
+    ns.Cells(ra + 3, 27) = ""
+    ns.Cells(ra + 3, 28) = ""
+    ns.Cells(ra + 3, 29) = ""
+    ns.Cells(ra + 3, 30) = ""
+    ns.Cells(ra + 3, 31) = ""
+    ns.Cells(ra + 3, 32) = ""
+    ns.Cells(ra + 3, 33) = ""
+    ns.Cells(ra + 3, 34) = ""
+    ns.Cells(ra + 3, 35) = ""
+    ns.Cells(ra + 3, 36) = ""
+    ns.Cells(ra + 3, 37) = ""
+    ns.Cells(ra + 3, 38) = ""
+    ns.Cells(ra + 3, 39) = ""
+    ns.Cells(ra + 3, 40) = ""
+    ns.Cells(ra + 3, 41) = ""
+    ns.Cells(ra + 3, 42) = ""
+    ns.Cells(ra + 3, 43) = ""
+    ns.Cells(ra + 3, 44) = ""
+    ns.Cells(ra + 3, 45) = ""
+    ns.Cells(ra + 3, 46) = ""
+    ns.Cells(ra + 3, 47) = ""
+    ns.Cells(ra + 3, 48) = ""
+    ns.Cells(ra + 3, 49) = ""
+    ns.Cells(ra + 3, 50) = ""
+    ns.Cells(ra + 3, 51) = ""
+    ns.Cells(ra + 3, 52) = ""
+    ns.Cells(ra + 3, 53) = ""
+    ns.Cells(ra + 3, 54) = ""
+    ns.Cells(ra + 3, 55) = ""
+    ns.Cells(ra + 3, 56) = ""
+    ns.Cells(ra + 3, 57) = ""
+    ns.Cells(ra + 3, 58) = ""
+    ns.Cells(ra + 3, 59) = ""
+    ns.Cells(ra + 3, 60) = ""
+    ns.Cells(ra + 3, 61) = PRSETPHF357MPN
+    ns.Cells(ra + 3, 62) = ""
+    ns.Cells(ra + 3, 63) = ""
+    ns.Cells(ra + 3, 64) = ""
+    ns.Cells(ra + 3, 65) = ""
+    ns.Cells(ra + 3, 66) = ""
+    ns.Cells(ra + 3, 67) = ""
+    ns.Cells(ra + 3, 68) = ""
+    ns.Cells(ra + 3, 69) = ""
+    
+    '3X5 HG SKU Row 5
+    ns.Cells(ra + 3, 1) = "SKU"
+    ns.Cells(ra + 3, 2) = ""
+    ns.Cells(ra + 3, 3) = ""
+    ns.Cells(ra + 3, 4) = "[RT]Finishing Options=Pole Hem Only,[RT]Flag and Pole Size=3' X 5' Flag with 8' Oak Pole"
+    ns.Cells(ra + 3, 5) = ""
+    ns.Cells(ra + 3, 6) = PRSETPH358SKU
+    ns.Cells(ra + 3, 7) = "FlagZone"
+    ns.Cells(ra + 3, 8) = "FlagZone"
+    ns.Cells(ra + 3, 9) = ""
+    ns.Cells(ra + 3, 10) = ""
+    ns.Cells(ra + 3, 11) = "FlagZone"
+    ns.Cells(ra + 3, 12) = ""
+    ns.Cells(ra + 3, 13) = ""
+    ns.Cells(ra + 3, 14) = ""
+    ns.Cells(ra + 3, 15) = ""
+    ns.Cells(ra + 3, 16) = PRSETPH358Cost
+    ns.Cells(ra + 3, 17) = ""
+    ns.Cells(ra + 3, 18) = ""
+    ns.Cells(ra + 3, 19) = ""
+    ns.Cells(ra + 3, 20) = "N"
+    ns.Cells(ra + 3, 21) = ""
+    ns.Cells(ra + 3, 22) = "18"
+    ns.Cells(ra + 3, 23) = "53"
+    ns.Cells(ra + 3, 24) = "13"
+    ns.Cells(ra + 3, 25) = "6"
+    ns.Cells(ra + 3, 26) = ""
+    ns.Cells(ra + 3, 27) = ""
+    ns.Cells(ra + 3, 28) = ""
+    ns.Cells(ra + 3, 29) = ""
+    ns.Cells(ra + 3, 30) = ""
+    ns.Cells(ra + 3, 31) = ""
+    ns.Cells(ra + 3, 32) = ""
+    ns.Cells(ra + 3, 33) = ""
+    ns.Cells(ra + 3, 34) = ""
+    ns.Cells(ra + 3, 35) = ""
+    ns.Cells(ra + 3, 36) = ""
+    ns.Cells(ra + 3, 37) = ""
+    ns.Cells(ra + 3, 38) = ""
+    ns.Cells(ra + 3, 39) = ""
+    ns.Cells(ra + 3, 40) = ""
+    ns.Cells(ra + 3, 41) = ""
+    ns.Cells(ra + 3, 42) = ""
+    ns.Cells(ra + 3, 43) = ""
+    ns.Cells(ra + 3, 44) = ""
+    ns.Cells(ra + 3, 45) = ""
+    ns.Cells(ra + 3, 46) = ""
+    ns.Cells(ra + 3, 47) = ""
+    ns.Cells(ra + 3, 48) = ""
+    ns.Cells(ra + 3, 49) = ""
+    ns.Cells(ra + 3, 50) = ""
+    ns.Cells(ra + 3, 51) = ""
+    ns.Cells(ra + 3, 52) = ""
+    ns.Cells(ra + 3, 53) = ""
+    ns.Cells(ra + 3, 54) = ""
+    ns.Cells(ra + 3, 55) = ""
+    ns.Cells(ra + 3, 56) = ""
+    ns.Cells(ra + 3, 57) = ""
+    ns.Cells(ra + 3, 58) = ""
+    ns.Cells(ra + 3, 59) = ""
+    ns.Cells(ra + 3, 60) = ""
+    ns.Cells(ra + 3, 61) = PRSETPH358MPN
+    ns.Cells(ra + 3, 62) = ""
+    ns.Cells(ra + 3, 63) = ""
+    ns.Cells(ra + 3, 64) = ""
+    ns.Cells(ra + 3, 65) = ""
+    ns.Cells(ra + 3, 66) = ""
+    ns.Cells(ra + 3, 67) = ""
+    ns.Cells(ra + 3, 68) = ""
+    ns.Cells(ra + 3, 69) = ""
+    
+    '4X6 HG SKU Row 6
+    ns.Cells(ra + 3, 1) = "SKU"
+    ns.Cells(ra + 3, 2) = ""
+    ns.Cells(ra + 3, 3) = ""
+    ns.Cells(ra + 3, 4) = "[RT]Finishing Options=Pole Hem & Fringe,[RT]Flag and Pole Size=3' X 5' Flag with 8' Oak Pole"
+    ns.Cells(ra + 3, 5) = ""
+    ns.Cells(ra + 3, 6) = PRSETPHF358SKU
+    ns.Cells(ra + 3, 7) = "FlagZone"
+    ns.Cells(ra + 3, 8) = "FlagZone"
+    ns.Cells(ra + 3, 9) = ""
+    ns.Cells(ra + 3, 10) = ""
+    ns.Cells(ra + 3, 11) = "FlagZone"
+    ns.Cells(ra + 3, 12) = ""
+    ns.Cells(ra + 3, 13) = ""
+    ns.Cells(ra + 3, 14) = ""
+    ns.Cells(ra + 3, 15) = ""
+    ns.Cells(ra + 3, 16) = PRSETPHF358Cost
+    ns.Cells(ra + 3, 17) = ""
+    ns.Cells(ra + 3, 18) = ""
+    ns.Cells(ra + 3, 19) = ""
+    ns.Cells(ra + 3, 20) = "N"
+    ns.Cells(ra + 3, 21) = ""
+    ns.Cells(ra + 3, 22) = "18"
+    ns.Cells(ra + 3, 23) = "53"
+    ns.Cells(ra + 3, 24) = "13"
+    ns.Cells(ra + 3, 25) = "6"
+    ns.Cells(ra + 3, 26) = ""
+    ns.Cells(ra + 3, 27) = ""
+    ns.Cells(ra + 3, 28) = ""
+    ns.Cells(ra + 3, 29) = ""
+    ns.Cells(ra + 3, 30) = ""
+    ns.Cells(ra + 3, 31) = ""
+    ns.Cells(ra + 3, 32) = ""
+    ns.Cells(ra + 3, 33) = ""
+    ns.Cells(ra + 3, 34) = ""
+    ns.Cells(ra + 3, 35) = ""
+    ns.Cells(ra + 3, 36) = ""
+    ns.Cells(ra + 3, 37) = ""
+    ns.Cells(ra + 3, 38) = ""
+    ns.Cells(ra + 3, 39) = ""
+    ns.Cells(ra + 3, 40) = ""
+    ns.Cells(ra + 3, 41) = ""
+    ns.Cells(ra + 3, 42) = ""
+    ns.Cells(ra + 3, 43) = ""
+    ns.Cells(ra + 3, 44) = ""
+    ns.Cells(ra + 3, 45) = ""
+    ns.Cells(ra + 3, 46) = ""
+    ns.Cells(ra + 3, 47) = ""
+    ns.Cells(ra + 3, 48) = ""
+    ns.Cells(ra + 3, 49) = ""
+    ns.Cells(ra + 3, 50) = ""
+    ns.Cells(ra + 3, 51) = ""
+    ns.Cells(ra + 3, 52) = ""
+    ns.Cells(ra + 3, 53) = ""
+    ns.Cells(ra + 3, 54) = ""
+    ns.Cells(ra + 3, 55) = ""
+    ns.Cells(ra + 3, 56) = ""
+    ns.Cells(ra + 3, 57) = ""
+    ns.Cells(ra + 3, 58) = ""
+    ns.Cells(ra + 3, 59) = ""
+    ns.Cells(ra + 3, 60) = ""
+    ns.Cells(ra + 3, 61) = PRSETPHF358MPN
+    ns.Cells(ra + 3, 62) = ""
+    ns.Cells(ra + 3, 63) = ""
+    ns.Cells(ra + 3, 64) = ""
+    ns.Cells(ra + 3, 65) = ""
+    ns.Cells(ra + 3, 66) = ""
+    ns.Cells(ra + 3, 67) = ""
+    ns.Cells(ra + 3, 68) = ""
+    ns.Cells(ra + 3, 69) = ""
+    
+    '5X8 HG SKU Row 7
+    ns.Cells(ra + 3, 1) = "SKU"
+    ns.Cells(ra + 3, 2) = ""
+    ns.Cells(ra + 3, 3) = ""
+    ns.Cells(ra + 3, 4) = "[RT]Finishing Options=Pole Hem Only,[RT]Flag and Pole Size=4' X 6' Flag with 9' Oak Pole"
+    ns.Cells(ra + 3, 5) = ""
+    ns.Cells(ra + 3, 6) = PRSETPH469SKU
+    ns.Cells(ra + 3, 7) = "FlagZone"
+    ns.Cells(ra + 3, 8) = "FlagZone"
+    ns.Cells(ra + 3, 9) = ""
+    ns.Cells(ra + 3, 10) = ""
+    ns.Cells(ra + 3, 11) = "FlagZone"
+    ns.Cells(ra + 3, 12) = ""
+    ns.Cells(ra + 3, 13) = ""
+    ns.Cells(ra + 3, 14) = ""
+    ns.Cells(ra + 3, 15) = ""
+    ns.Cells(ra + 3, 16) = PRSETPH469Cost
+    ns.Cells(ra + 3, 17) = ""
+    ns.Cells(ra + 3, 18) = ""
+    ns.Cells(ra + 3, 19) = ""
+    ns.Cells(ra + 3, 20) = "N"
+    ns.Cells(ra + 3, 21) = ""
+    ns.Cells(ra + 3, 22) = "25"
+    ns.Cells(ra + 3, 23) = "53"
+    ns.Cells(ra + 3, 24) = "13"
+    ns.Cells(ra + 3, 25) = "6"
+    ns.Cells(ra + 3, 26) = ""
+    ns.Cells(ra + 3, 27) = ""
+    ns.Cells(ra + 3, 28) = ""
+    ns.Cells(ra + 3, 29) = ""
+    ns.Cells(ra + 3, 30) = ""
+    ns.Cells(ra + 3, 31) = ""
+    ns.Cells(ra + 3, 32) = ""
+    ns.Cells(ra + 3, 33) = ""
+    ns.Cells(ra + 3, 34) = ""
+    ns.Cells(ra + 3, 35) = ""
+    ns.Cells(ra + 3, 36) = ""
+    ns.Cells(ra + 3, 37) = ""
+    ns.Cells(ra + 3, 38) = ""
+    ns.Cells(ra + 3, 39) = ""
+    ns.Cells(ra + 3, 40) = ""
+    ns.Cells(ra + 3, 41) = ""
+    ns.Cells(ra + 3, 42) = ""
+    ns.Cells(ra + 3, 43) = ""
+    ns.Cells(ra + 3, 44) = ""
+    ns.Cells(ra + 3, 45) = ""
+    ns.Cells(ra + 3, 46) = ""
+    ns.Cells(ra + 3, 47) = ""
+    ns.Cells(ra + 3, 48) = ""
+    ns.Cells(ra + 3, 49) = ""
+    ns.Cells(ra + 3, 50) = ""
+    ns.Cells(ra + 3, 51) = ""
+    ns.Cells(ra + 3, 52) = ""
+    ns.Cells(ra + 3, 53) = ""
+    ns.Cells(ra + 3, 54) = ""
+    ns.Cells(ra + 3, 55) = ""
+    ns.Cells(ra + 3, 56) = ""
+    ns.Cells(ra + 3, 57) = ""
+    ns.Cells(ra + 3, 58) = ""
+    ns.Cells(ra + 3, 59) = ""
+    ns.Cells(ra + 3, 60) = ""
+    ns.Cells(ra + 3, 61) = PRSETPH469MPN
+    ns.Cells(ra + 3, 62) = ""
+    ns.Cells(ra + 3, 63) = ""
+    ns.Cells(ra + 3, 64) = ""
+    ns.Cells(ra + 3, 65) = ""
+    ns.Cells(ra + 3, 66) = ""
+    ns.Cells(ra + 3, 67) = ""
+    ns.Cells(ra + 3, 68) = ""
+    ns.Cells(ra + 3, 69) = ""
+    
+    '6X10 HG SKU Row 8
+    ns.Cells(ra + 3, 1) = "SKU"
+    ns.Cells(ra + 3, 2) = ""
+    ns.Cells(ra + 3, 3) = ""
+    ns.Cells(ra + 3, 4) = "[RT]Finishing Options=Pole Hem & Fringe,[RT]Flag and Pole Size=4' X 6' Flag with 9' Oak Pole"
+    ns.Cells(ra + 3, 5) = ""
+    ns.Cells(ra + 3, 6) = PRSETPHF469SKU
+    ns.Cells(ra + 3, 7) = "FlagZone"
+    ns.Cells(ra + 3, 8) = "FlagZone"
+    ns.Cells(ra + 3, 9) = ""
+    ns.Cells(ra + 3, 10) = ""
+    ns.Cells(ra + 3, 11) = "FlagZone"
+    ns.Cells(ra + 3, 12) = ""
+    ns.Cells(ra + 3, 13) = ""
+    ns.Cells(ra + 3, 14) = ""
+    ns.Cells(ra + 3, 15) = ""
+    ns.Cells(ra + 3, 16) = PRSETPHF469Cost
+    ns.Cells(ra + 3, 17) = ""
+    ns.Cells(ra + 3, 18) = ""
+    ns.Cells(ra + 3, 19) = ""
+    ns.Cells(ra + 3, 20) = "N"
+    ns.Cells(ra + 3, 21) = ""
+    ns.Cells(ra + 3, 22) = "25"
+    ns.Cells(ra + 3, 23) = "53"
+    ns.Cells(ra + 3, 24) = "13"
+    ns.Cells(ra + 3, 25) = "6"
+    ns.Cells(ra + 3, 26) = ""
+    ns.Cells(ra + 3, 27) = ""
+    ns.Cells(ra + 3, 28) = ""
+    ns.Cells(ra + 3, 29) = ""
+    ns.Cells(ra + 3, 30) = ""
+    ns.Cells(ra + 3, 31) = ""
+    ns.Cells(ra + 3, 32) = ""
+    ns.Cells(ra + 3, 33) = ""
+    ns.Cells(ra + 3, 34) = ""
+    ns.Cells(ra + 3, 35) = ""
+    ns.Cells(ra + 3, 36) = ""
+    ns.Cells(ra + 3, 37) = ""
+    ns.Cells(ra + 3, 38) = ""
+    ns.Cells(ra + 3, 39) = ""
+    ns.Cells(ra + 3, 40) = ""
+    ns.Cells(ra + 3, 41) = ""
+    ns.Cells(ra + 3, 42) = ""
+    ns.Cells(ra + 3, 43) = ""
+    ns.Cells(ra + 3, 44) = ""
+    ns.Cells(ra + 3, 45) = ""
+    ns.Cells(ra + 3, 46) = ""
+    ns.Cells(ra + 3, 47) = ""
+    ns.Cells(ra + 3, 48) = ""
+    ns.Cells(ra + 3, 49) = ""
+    ns.Cells(ra + 3, 50) = ""
+    ns.Cells(ra + 3, 51) = ""
+    ns.Cells(ra + 3, 52) = ""
+    ns.Cells(ra + 3, 53) = ""
+    ns.Cells(ra + 3, 54) = ""
+    ns.Cells(ra + 3, 55) = ""
+    ns.Cells(ra + 3, 56) = ""
+    ns.Cells(ra + 3, 57) = ""
+    ns.Cells(ra + 3, 58) = ""
+    ns.Cells(ra + 3, 59) = ""
+    ns.Cells(ra + 3, 60) = ""
+    ns.Cells(ra + 3, 61) = PRSETPHF469MPN
+    ns.Cells(ra + 3, 62) = ""
+    ns.Cells(ra + 3, 63) = ""
+    ns.Cells(ra + 3, 64) = ""
+    ns.Cells(ra + 3, 65) = ""
+    ns.Cells(ra + 3, 66) = ""
+    ns.Cells(ra + 3, 67) = ""
+    ns.Cells(ra + 3, 68) = ""
+    ns.Cells(ra + 3, 69) = ""
+
+End Sub
+
+Sub FlagSKURules()
+Dim ns As Worksheet
+Set ns = ActiveSheet
+For i = 1 To range.Rows.Count
+' range.Rows.Count
+    ' Debug.Print (range.Cells(i, 1))
+    Dim ra As Integer
+    ra = (i - 1) * 18
+    Dim range As range
+    Set range = ws.range("A3:EM57")
+    ' create new file
+    Dim state As String
+    state = range.Cells(i, 1)
+    Dim statecode As String
+    statecode = range.Cells(i, 2)
+    Dim FZNo As String
+    FZNo = range.Cells(i, 3)
+    Dim FZClass As String
+    FZClass = range.Cells(i, 4)
+    Dim FZ3X5PHPN As String
+    FZ3X5PHPN = range.Cells(i, 5)
+    Dim FZ3X5PHPrice As String
+    FZ3X5PHPrice = range.Cells(i, 6)
+    Dim FZ3X5PHFPN As String
+    FZ3X5PHFPN = range.Cells(i, 7)
+    Dim FZ3X5PHFPrice As String
+    FZ3X5PHFPrice = range.Cells(i, 8)
+    Dim FZ4X6PHPN As String
+    FZ4X6PHPN = range.Cells(i, 9)
+    Dim FZ4X6PHPrice As String
+    FZ4X6PHPrice = range.Cells(i, 10)
+    Dim FZ4X6PHFPN As String
+    FZ4X6PHFPN = range.Cells(i, 11)
+    Dim FZ4X6PHFPrice As String
+    FZ4X6PHFPrice = range.Cells(i, 12)
+    Dim FZ7FtHWPN As String
+    FZ7FtHWPN = range.Cells(i, 13)
+    Dim FZ7FtHWPrice As String
+    FZ7FtHWPrice = range.Cells(i, 14)
+    Dim FZ8FtHWPN As String
+    FZ8FtHWPN = range.Cells(i, 15)
+    Dim FZ8FtHWPrice As String
+    FZ8FtHWPrice = range.Cells(i, 16)
+    Dim FZ9FtHWPN As String
+    FZ9FtHWPN = range.Cells(i, 17)
+    Dim FZ9FtHWPrice As String
+    FZ9FtHWPrice = range.Cells(i, 18)
+    Dim BaseSKU As String
+    BaseSKU = range.Cells(i, 19)
+    Dim PRSETPH357SKU As String
+    PRSETPH357SKU = range.Cells(i, 20)
+    Dim PRSETPH357Cost As String
+    PRSETPH357Cost = range.Cells(i, 21)
+    Dim PRSETPH357Price As String
+    PRSETPH357Price = range.Cells(i, 22)
+    Dim PRSETPH357MPN As String
+    PRSETPH357MPN = range.Cells(i, 23)
+    Dim PRSETPHF357SKU As String
+    PRSETPHF357SKU = range.Cells(i, 24)
+    Dim PRSETPHF357Cost As String
+    PRSETPHF357Cost = range.Cells(i, 25)
+    Dim PRSETPHF357Price As String
+    PRSETPHF357Price = range.Cells(i, 26)
+    Dim PRSETPHF357MPN As String
+    PRSETPHF357MPN = range.Cells(i, 27)
+    Dim PRSETPH358SKU As String
+    PRSETPH358SKU = range.Cells(i, 28)
+    Dim PRSETPH358Cost As String
+    PRSETPH358Cost = range.Cells(i, 29)
+    Dim PRSETPH358Price As String
+    PRSETPH358Price = range.Cells(i, 30)
+    Dim PRSETPH358MPN As String
+    PRSETPH358MPN = range.Cells(i, 31)
+    Dim PRSETPHF358SKU As String
+    PRSETPHF358SKU = range.Cells(i, 32)
+    Dim PRSETPHF358Cost As String
+    PRSETPHF358Cost = range.Cells(i, 33)
+    Dim PRSETPHF358Price As String
+    PRSETPHF358Price = range.Cells(i, 34)
+    Dim PRSETPHF358MPN As String
+    PRSETPHF358MPN = range.Cells(i, 35)
+    Dim PRSETPH469SKU As String
+    PRSETPH469SKU = range.Cells(i, 36)
+    Dim PRSETPH469Cost As String
+    PRSETPH469Cost = range.Cells(i, 37)
+    Dim PRSETPH469Price As String
+    PRSETPH469Price = range.Cells(i, 38)
+    Dim PRSETPH469MPN As String
+    PRSETPH469MPN = range.Cells(i, 39)
+    Dim PRSETPHF469SKU As String
+    PRSETPHF469SKU = range.Cells(i, 40)
+    Dim PRSETPHF469Cost As String
+    PRSETPHF469Cost = range.Cells(i, 41)
+    Dim PRSETPHF469Price As String
+    PRSETPHF469Price = range.Cells(i, 42)
+    Dim PRSETPHF469MPN As String
+    PRSETPHF469MPN = range.Cells(i, 43)
+    Dim PRSETPHImage As String
+    PRSETPHImage = range.Cells(i, 44)
+    Dim PRSETPHFImage As String
+    PRSETPHFImage = range.Cells(i, 45)
+    Dim PHFFlagImage As String
+    PHFFlagImage = range.Cells(i, 46)
+    Dim HWImage As String
+    HWImage = range.Cells(i, 47)
+    Dim ImageDesc As String
+    ImageDesc = range.Cells(i, 48)
+    Dim PageTitle As String
+    PageTitle = range.Cells(i, 49)
+    Dim Category As String
+    Category = range.Cells(i, 50)
+    '12inX18inHG Rule Row 12
+    ns.Cells(ra + 12, 1) = "RULE"
+    ns.Cells(ra + 12, 2) = ""
+    ns.Cells(ra + 12, 3) = ""
+    ns.Cells(ra + 12, 4) = ""
+    ns.Cells(ra + 12, 5) = ""
+    ns.Cells(ra + 12, 6) = PRSETPH357SKU
+    ns.Cells(ra + 12, 7) = ""
+    ns.Cells(ra + 12, 8) = ""
+    ns.Cells(ra + 12, 9) = ""
+    ns.Cells(ra + 12, 10) = ""
+    ns.Cells(ra + 12, 11) = ""
+    ns.Cells(ra + 12, 12) = ""
+    ns.Cells(ra + 12, 13) = ""
+    ns.Cells(ra + 12, 14) = ""
+    ns.Cells(ra + 12, 15) = PRSETPH357Price
+    ns.Cells(ra + 12, 16) = ""
+    ns.Cells(ra + 12, 17) = ""
+    ns.Cells(ra + 12, 18) = ""
+    ns.Cells(ra + 12, 19) = ""
+    ns.Cells(ra + 12, 20) = ""
+    ns.Cells(ra + 12, 21) = ""
+    ns.Cells(ra + 12, 22) = ""
+    ns.Cells(ra + 12, 23) = ""
+    ns.Cells(ra + 12, 24) = ""
+    ns.Cells(ra + 12, 25) = ""
+    ns.Cells(ra + 12, 26) = "Y"
+    ns.Cells(ra + 12, 27) = "Y"
+    ns.Cells(ra + 12, 28) = ""
+    ns.Cells(ra + 12, 29) = ""
+    ns.Cells(ra + 12, 30) = ""
+    ns.Cells(ra + 12, 31) = ""
+    ns.Cells(ra + 12, 32) = ""
+    ns.Cells(ra + 12, 33) = "https://emflag.com/content/Flags/State/Indoor/Presentation%20Sets/PRSET-" + state + "-PH.png"
+    ns.Cells(ra + 12, 34) = "https://emflag.com/content/Flags/State/Indoor/Presentation%20Sets/PRSET-" + state + "-PH.png"
+    ns.Cells(ra + 12, 35) = ""
+    ns.Cells(ra + 12, 36) = ""
+    ns.Cells(ra + 12, 37) = ""
+    ns.Cells(ra + 12, 38) = "N"
+    ns.Cells(ra + 12, 39) = ""
+    ns.Cells(ra + 12, 40) = ""
+    ns.Cells(ra + 12, 41) = ""
+    ns.Cells(ra + 12, 42) = ""
+    ns.Cells(ra + 12, 43) = ""
+    ns.Cells(ra + 12, 44) = ""
+    ns.Cells(ra + 12, 45) = ""
+    ns.Cells(ra + 12, 46) = ""
+    ns.Cells(ra + 12, 47) = ""
+    ns.Cells(ra + 12, 48) = ""
+    ns.Cells(ra + 12, 49) = ""
+    ns.Cells(ra + 12, 50) = ""
+    ns.Cells(ra + 12, 51) = ""
+    ns.Cells(ra + 12, 52) = ""
+    ns.Cells(ra + 12, 53) = ""
+    ns.Cells(ra + 12, 54) = ""
+    ns.Cells(ra + 12, 55) = ""
+    ns.Cells(ra + 12, 56) = ""
+    ns.Cells(ra + 12, 57) = ""
+    ns.Cells(ra + 12, 58) = ""
+    ns.Cells(ra + 12, 59) = ""
+    ns.Cells(ra + 12, 60) = ""
+    ns.Cells(ra + 12, 61) = ""
+    ns.Cells(ra + 12, 62) = ""
+    ns.Cells(ra + 12, 63) = ""
+    ns.Cells(ra + 12, 64) = ""
+    ns.Cells(ra + 12, 65) = ""
+    ns.Cells(ra + 12, 66) = ""
+    ns.Cells(ra + 12, 67) = ""
+    ns.Cells(ra + 12, 68) = ""
+    ns.Cells(ra + 12, 69) = ""
+    
+    '2X3 HG Rule Row 13
+    ns.Cells(ra + 12, 1) = "RULE"
+    ns.Cells(ra + 12, 2) = ""
+    ns.Cells(ra + 12, 3) = ""
+    ns.Cells(ra + 12, 4) = ""
+    ns.Cells(ra + 12, 5) = ""
+    ns.Cells(ra + 12, 6) = PRSETPHF357SKU
+    ns.Cells(ra + 12, 7) = ""
+    ns.Cells(ra + 12, 8) = ""
+    ns.Cells(ra + 12, 9) = ""
+    ns.Cells(ra + 12, 10) = ""
+    ns.Cells(ra + 12, 11) = ""
+    ns.Cells(ra + 12, 12) = ""
+    ns.Cells(ra + 12, 13) = ""
+    ns.Cells(ra + 12, 14) = ""
+    ns.Cells(ra + 12, 15) = PRSETPHF357Price
+    ns.Cells(ra + 12, 16) = ""
+    ns.Cells(ra + 12, 17) = ""
+    ns.Cells(ra + 12, 18) = ""
+    ns.Cells(ra + 12, 19) = ""
+    ns.Cells(ra + 12, 20) = ""
+    ns.Cells(ra + 12, 21) = ""
+    ns.Cells(ra + 12, 22) = ""
+    ns.Cells(ra + 12, 23) = ""
+    ns.Cells(ra + 12, 24) = ""
+    ns.Cells(ra + 12, 25) = ""
+    ns.Cells(ra + 12, 26) = "Y"
+    ns.Cells(ra + 12, 27) = "Y"
+    ns.Cells(ra + 12, 28) = ""
+    ns.Cells(ra + 12, 29) = ""
+    ns.Cells(ra + 12, 30) = ""
+    ns.Cells(ra + 12, 31) = ""
+    ns.Cells(ra + 12, 32) = ""
+    ns.Cells(ra + 12, 33) = "https://emflag.com/content/Flags/State/Indoor/Presentation%20Sets/PRSET-" + state + "-PHF.png"
+    ns.Cells(ra + 12, 34) = "https://emflag.com/content/Flags/State/Indoor/Presentation%20Sets/PRSET-" + state + "-PHF.png"
+    ns.Cells(ra + 12, 35) = ""
+    ns.Cells(ra + 12, 36) = ""
+    ns.Cells(ra + 12, 37) = ""
+    ns.Cells(ra + 12, 38) = "N"
+    ns.Cells(ra + 12, 39) = ""
+    ns.Cells(ra + 12, 40) = ""
+    ns.Cells(ra + 12, 41) = ""
+    ns.Cells(ra + 12, 42) = ""
+    ns.Cells(ra + 12, 43) = ""
+    ns.Cells(ra + 12, 44) = ""
+    ns.Cells(ra + 12, 45) = ""
+    ns.Cells(ra + 12, 46) = ""
+    ns.Cells(ra + 12, 47) = ""
+    ns.Cells(ra + 12, 48) = ""
+    ns.Cells(ra + 12, 49) = ""
+    ns.Cells(ra + 12, 50) = ""
+    ns.Cells(ra + 12, 51) = ""
+    ns.Cells(ra + 12, 52) = ""
+    ns.Cells(ra + 12, 53) = ""
+    ns.Cells(ra + 12, 54) = ""
+    ns.Cells(ra + 12, 55) = ""
+    ns.Cells(ra + 12, 56) = ""
+    ns.Cells(ra + 12, 57) = ""
+    ns.Cells(ra + 12, 58) = ""
+    ns.Cells(ra + 12, 59) = ""
+    ns.Cells(ra + 12, 60) = ""
+    ns.Cells(ra + 12, 61) = ""
+    ns.Cells(ra + 12, 62) = ""
+    ns.Cells(ra + 12, 63) = ""
+    ns.Cells(ra + 12, 64) = ""
+    ns.Cells(ra + 12, 65) = ""
+    ns.Cells(ra + 12, 66) = ""
+    ns.Cells(ra + 12, 67) = ""
+    ns.Cells(ra + 12, 68) = ""
+    ns.Cells(ra + 12, 69) = ""
+    
+    '3X5 HG Rule Row 14
+    ns.Cells(ra + 12, 1) = "RULE"
+    ns.Cells(ra + 12, 2) = ""
+    ns.Cells(ra + 12, 3) = ""
+    ns.Cells(ra + 12, 4) = ""
+    ns.Cells(ra + 12, 5) = ""
+    ns.Cells(ra + 12, 6) = PRSETPH358SKU
+    ns.Cells(ra + 12, 7) = ""
+    ns.Cells(ra + 12, 8) = ""
+    ns.Cells(ra + 12, 9) = ""
+    ns.Cells(ra + 12, 10) = ""
+    ns.Cells(ra + 12, 11) = ""
+    ns.Cells(ra + 12, 12) = ""
+    ns.Cells(ra + 12, 13) = ""
+    ns.Cells(ra + 12, 14) = ""
+    ns.Cells(ra + 12, 15) = PRSETPH358Price
+    ns.Cells(ra + 12, 16) = ""
+    ns.Cells(ra + 12, 17) = ""
+    ns.Cells(ra + 12, 18) = ""
+    ns.Cells(ra + 12, 19) = ""
+    ns.Cells(ra + 12, 20) = ""
+    ns.Cells(ra + 12, 21) = ""
+    ns.Cells(ra + 12, 22) = ""
+    ns.Cells(ra + 12, 23) = ""
+    ns.Cells(ra + 12, 24) = ""
+    ns.Cells(ra + 12, 25) = ""
+    ns.Cells(ra + 12, 26) = "Y"
+    ns.Cells(ra + 12, 27) = "Y"
+    ns.Cells(ra + 12, 28) = ""
+    ns.Cells(ra + 12, 29) = ""
+    ns.Cells(ra + 12, 30) = ""
+    ns.Cells(ra + 12, 31) = ""
+    ns.Cells(ra + 12, 32) = ""
+    ns.Cells(ra + 12, 33) = "https://emflag.com/content/Flags/State/Indoor/Presentation%20Sets/PRSET-" + state + "-PH.png"
+    ns.Cells(ra + 12, 34) = "https://emflag.com/content/Flags/State/Indoor/Presentation%20Sets/PRSET-" + state + "-PH.png"
+    ns.Cells(ra + 12, 35) = ""
+    ns.Cells(ra + 12, 36) = ""
+    ns.Cells(ra + 12, 37) = ""
+    ns.Cells(ra + 12, 38) = "N"
+    ns.Cells(ra + 12, 39) = ""
+    ns.Cells(ra + 12, 40) = ""
+    ns.Cells(ra + 12, 41) = ""
+    ns.Cells(ra + 12, 42) = ""
+    ns.Cells(ra + 12, 43) = ""
+    ns.Cells(ra + 12, 44) = ""
+    ns.Cells(ra + 12, 45) = ""
+    ns.Cells(ra + 12, 46) = ""
+    ns.Cells(ra + 12, 47) = ""
+    ns.Cells(ra + 12, 48) = ""
+    ns.Cells(ra + 12, 49) = ""
+    ns.Cells(ra + 12, 50) = ""
+    ns.Cells(ra + 12, 51) = ""
+    ns.Cells(ra + 12, 52) = ""
+    ns.Cells(ra + 12, 53) = ""
+    ns.Cells(ra + 12, 54) = ""
+    ns.Cells(ra + 12, 55) = ""
+    ns.Cells(ra + 12, 56) = ""
+    ns.Cells(ra + 12, 57) = ""
+    ns.Cells(ra + 12, 58) = ""
+    ns.Cells(ra + 12, 59) = ""
+    ns.Cells(ra + 12, 60) = ""
+    ns.Cells(ra + 12, 61) = ""
+    ns.Cells(ra + 12, 62) = ""
+    ns.Cells(ra + 12, 63) = ""
+    ns.Cells(ra + 12, 64) = ""
+    ns.Cells(ra + 12, 65) = ""
+    ns.Cells(ra + 12, 66) = ""
+    ns.Cells(ra + 12, 67) = ""
+    ns.Cells(ra + 12, 68) = ""
+    ns.Cells(ra + 12, 69) = ""
+    
+    '4X6 HG Rule Row 15
+    ns.Cells(ra + 12, 1) = "RULE"
+    ns.Cells(ra + 12, 2) = ""
+    ns.Cells(ra + 12, 3) = ""
+    ns.Cells(ra + 12, 4) = ""
+    ns.Cells(ra + 12, 5) = ""
+    ns.Cells(ra + 12, 6) = PRSETPHF358SKU
+    ns.Cells(ra + 12, 7) = ""
+    ns.Cells(ra + 12, 8) = ""
+    ns.Cells(ra + 12, 9) = ""
+    ns.Cells(ra + 12, 10) = ""
+    ns.Cells(ra + 12, 11) = ""
+    ns.Cells(ra + 12, 12) = ""
+    ns.Cells(ra + 12, 13) = ""
+    ns.Cells(ra + 12, 14) = ""
+    ns.Cells(ra + 12, 15) = PRSETPHF358Price
+    ns.Cells(ra + 12, 16) = ""
+    ns.Cells(ra + 12, 17) = ""
+    ns.Cells(ra + 12, 18) = ""
+    ns.Cells(ra + 12, 19) = ""
+    ns.Cells(ra + 12, 20) = ""
+    ns.Cells(ra + 12, 21) = ""
+    ns.Cells(ra + 12, 22) = ""
+    ns.Cells(ra + 12, 23) = ""
+    ns.Cells(ra + 12, 24) = ""
+    ns.Cells(ra + 12, 25) = ""
+    ns.Cells(ra + 12, 26) = "Y"
+    ns.Cells(ra + 12, 27) = "Y"
+    ns.Cells(ra + 12, 28) = ""
+    ns.Cells(ra + 12, 29) = ""
+    ns.Cells(ra + 12, 30) = ""
+    ns.Cells(ra + 12, 31) = ""
+    ns.Cells(ra + 12, 32) = ""
+    ns.Cells(ra + 12, 33) = "https://emflag.com/content/Flags/State/Indoor/Presentation%20Sets/PRSET-" + state + "-PHF.png"
+    ns.Cells(ra + 12, 34) = "https://emflag.com/content/Flags/State/Indoor/Presentation%20Sets/PRSET-" + state + "-PHF.png"
+    ns.Cells(ra + 12, 35) = ""
+    ns.Cells(ra + 12, 36) = ""
+    ns.Cells(ra + 12, 37) = ""
+    ns.Cells(ra + 12, 38) = "N"
+    ns.Cells(ra + 12, 39) = ""
+    ns.Cells(ra + 12, 40) = ""
+    ns.Cells(ra + 12, 41) = ""
+    ns.Cells(ra + 12, 42) = ""
+    ns.Cells(ra + 12, 43) = ""
+    ns.Cells(ra + 12, 44) = ""
+    ns.Cells(ra + 12, 45) = ""
+    ns.Cells(ra + 12, 46) = ""
+    ns.Cells(ra + 12, 47) = ""
+    ns.Cells(ra + 12, 48) = ""
+    ns.Cells(ra + 12, 49) = ""
+    ns.Cells(ra + 12, 50) = ""
+    ns.Cells(ra + 12, 51) = ""
+    ns.Cells(ra + 12, 52) = ""
+    ns.Cells(ra + 12, 53) = ""
+    ns.Cells(ra + 12, 54) = ""
+    ns.Cells(ra + 12, 55) = ""
+    ns.Cells(ra + 12, 56) = ""
+    ns.Cells(ra + 12, 57) = ""
+    ns.Cells(ra + 12, 58) = ""
+    ns.Cells(ra + 12, 59) = ""
+    ns.Cells(ra + 12, 60) = ""
+    ns.Cells(ra + 12, 61) = ""
+    ns.Cells(ra + 12, 62) = ""
+    ns.Cells(ra + 12, 63) = ""
+    ns.Cells(ra + 12, 64) = ""
+    ns.Cells(ra + 12, 65) = ""
+    ns.Cells(ra + 12, 66) = ""
+    ns.Cells(ra + 12, 67) = ""
+    ns.Cells(ra + 12, 68) = ""
+    ns.Cells(ra + 12, 69) = ""
+    
+    '5X8 HG Rule Row 16
+    ns.Cells(ra + 12, 1) = "RULE"
+    ns.Cells(ra + 12, 2) = ""
+    ns.Cells(ra + 12, 3) = ""
+    ns.Cells(ra + 12, 4) = ""
+    ns.Cells(ra + 12, 5) = ""
+    ns.Cells(ra + 12, 6) = PRSETPH469SKU
+    ns.Cells(ra + 12, 7) = ""
+    ns.Cells(ra + 12, 8) = ""
+    ns.Cells(ra + 12, 9) = ""
+    ns.Cells(ra + 12, 10) = ""
+    ns.Cells(ra + 12, 11) = ""
+    ns.Cells(ra + 12, 12) = ""
+    ns.Cells(ra + 12, 13) = ""
+    ns.Cells(ra + 12, 14) = ""
+    ns.Cells(ra + 12, 15) = PRSETPH469Price
+    ns.Cells(ra + 12, 16) = ""
+    ns.Cells(ra + 12, 17) = ""
+    ns.Cells(ra + 12, 18) = ""
+    ns.Cells(ra + 12, 19) = ""
+    ns.Cells(ra + 12, 20) = ""
+    ns.Cells(ra + 12, 21) = ""
+    ns.Cells(ra + 12, 22) = ""
+    ns.Cells(ra + 12, 23) = ""
+    ns.Cells(ra + 12, 24) = ""
+    ns.Cells(ra + 12, 25) = ""
+    ns.Cells(ra + 12, 26) = "Y"
+    ns.Cells(ra + 12, 27) = "Y"
+    ns.Cells(ra + 12, 28) = ""
+    ns.Cells(ra + 12, 29) = ""
+    ns.Cells(ra + 12, 30) = ""
+    ns.Cells(ra + 12, 31) = ""
+    ns.Cells(ra + 12, 32) = ""
+    ns.Cells(ra + 12, 33) = "https://emflag.com/content/Flags/State/Indoor/Presentation%20Sets/PRSET-" + state + "-PH.png"
+    ns.Cells(ra + 12, 34) = "https://emflag.com/content/Flags/State/Indoor/Presentation%20Sets/PRSET-" + state + "-PH.png"
+    ns.Cells(ra + 12, 35) = ""
+    ns.Cells(ra + 12, 36) = ""
+    ns.Cells(ra + 12, 37) = ""
+    ns.Cells(ra + 12, 38) = "N"
+    ns.Cells(ra + 12, 39) = ""
+    ns.Cells(ra + 12, 40) = ""
+    ns.Cells(ra + 12, 41) = ""
+    ns.Cells(ra + 12, 42) = ""
+    ns.Cells(ra + 12, 43) = ""
+    ns.Cells(ra + 12, 44) = ""
+    ns.Cells(ra + 12, 45) = ""
+    ns.Cells(ra + 12, 46) = ""
+    ns.Cells(ra + 12, 47) = ""
+    ns.Cells(ra + 12, 48) = ""
+    ns.Cells(ra + 12, 49) = ""
+    ns.Cells(ra + 12, 50) = ""
+    ns.Cells(ra + 12, 51) = ""
+    ns.Cells(ra + 12, 52) = ""
+    ns.Cells(ra + 12, 53) = ""
+    ns.Cells(ra + 12, 54) = ""
+    ns.Cells(ra + 12, 55) = ""
+    ns.Cells(ra + 12, 56) = ""
+    ns.Cells(ra + 12, 57) = ""
+    ns.Cells(ra + 12, 58) = ""
+    ns.Cells(ra + 12, 59) = ""
+    ns.Cells(ra + 12, 60) = ""
+    ns.Cells(ra + 12, 61) = ""
+    ns.Cells(ra + 12, 62) = ""
+    ns.Cells(ra + 12, 63) = ""
+    ns.Cells(ra + 12, 64) = ""
+    ns.Cells(ra + 12, 65) = ""
+    ns.Cells(ra + 12, 66) = ""
+    ns.Cells(ra + 12, 67) = ""
+    ns.Cells(ra + 12, 68) = ""
+    ns.Cells(ra + 12, 69) = ""
+    
+    '6X10 HG Rule Row 17
+    ns.Cells(ra + 12, 1) = "RULE"
+    ns.Cells(ra + 12, 2) = ""
+    ns.Cells(ra + 12, 3) = ""
+    ns.Cells(ra + 12, 4) = ""
+    ns.Cells(ra + 12, 5) = ""
+    ns.Cells(ra + 12, 6) = PRSETPHF469SKU
+    ns.Cells(ra + 12, 7) = ""
+    ns.Cells(ra + 12, 8) = ""
+    ns.Cells(ra + 12, 9) = ""
+    ns.Cells(ra + 12, 10) = ""
+    ns.Cells(ra + 12, 11) = ""
+    ns.Cells(ra + 12, 12) = ""
+    ns.Cells(ra + 12, 13) = ""
+    ns.Cells(ra + 12, 14) = ""
+    ns.Cells(ra + 12, 15) = PRSETPHF469Price
+    ns.Cells(ra + 12, 16) = ""
+    ns.Cells(ra + 12, 17) = ""
+    ns.Cells(ra + 12, 18) = ""
+    ns.Cells(ra + 12, 19) = ""
+    ns.Cells(ra + 12, 20) = ""
+    ns.Cells(ra + 12, 21) = ""
+    ns.Cells(ra + 12, 22) = ""
+    ns.Cells(ra + 12, 23) = ""
+    ns.Cells(ra + 12, 24) = ""
+    ns.Cells(ra + 12, 25) = ""
+    ns.Cells(ra + 12, 26) = "Y"
+    ns.Cells(ra + 12, 27) = "Y"
+    ns.Cells(ra + 12, 28) = ""
+    ns.Cells(ra + 12, 29) = ""
+    ns.Cells(ra + 12, 30) = ""
+    ns.Cells(ra + 12, 31) = ""
+    ns.Cells(ra + 12, 32) = ""
+    ns.Cells(ra + 12, 33) = "https://emflag.com/content/Flags/State/Indoor/Presentation%20Sets/PRSET-" + state + "-PHF.png"
+    ns.Cells(ra + 12, 34) = "https://emflag.com/content/Flags/State/Indoor/Presentation%20Sets/PRSET-" + state + "-PHF.png"
+    ns.Cells(ra + 12, 35) = ""
+    ns.Cells(ra + 12, 36) = ""
+    ns.Cells(ra + 12, 37) = ""
+    ns.Cells(ra + 12, 38) = "N"
+    ns.Cells(ra + 12, 39) = ""
+    ns.Cells(ra + 12, 40) = ""
+    ns.Cells(ra + 12, 41) = ""
+    ns.Cells(ra + 12, 42) = ""
+    ns.Cells(ra + 12, 43) = ""
+    ns.Cells(ra + 12, 44) = ""
+    ns.Cells(ra + 12, 45) = ""
+    ns.Cells(ra + 12, 46) = ""
+    ns.Cells(ra + 12, 47) = ""
+    ns.Cells(ra + 12, 48) = ""
+    ns.Cells(ra + 12, 49) = ""
+    ns.Cells(ra + 12, 50) = ""
+    ns.Cells(ra + 12, 51) = ""
+    ns.Cells(ra + 12, 52) = ""
+    ns.Cells(ra + 12, 53) = ""
+    ns.Cells(ra + 12, 54) = ""
+    ns.Cells(ra + 12, 55) = ""
+    ns.Cells(ra + 12, 56) = ""
+    ns.Cells(ra + 12, 57) = ""
+    ns.Cells(ra + 12, 58) = ""
+    ns.Cells(ra + 12, 59) = ""
+    ns.Cells(ra + 12, 60) = ""
+    ns.Cells(ra + 12, 61) = ""
+    ns.Cells(ra + 12, 62) = ""
+    ns.Cells(ra + 12, 63) = ""
+    ns.Cells(ra + 12, 64) = ""
+    ns.Cells(ra + 12, 65) = ""
+    ns.Cells(ra + 12, 66) = ""
+    ns.Cells(ra + 12, 67) = ""
+    ns.Cells(ra + 12, 68) = ""
+    ns.Cells(ra + 12, 69) = ""
+    
+End Sub
