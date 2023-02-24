@@ -1,3 +1,35 @@
+Option Explicit
+
+Public PRSETPH357SKU As String
+Public PRSETPH357MPN As String
+Public PRSETPH357Price As String
+Public PRSETPH357Cost As String
+
+Public PRSETPHF357SKU As String
+Public PRSETPHF357MPN As String
+Public PRSETPHF357Price As String
+Public PRSETPHF357Cost As String
+
+Public PRSETPH358SKU As String
+Public PRSETPH358MPN As String
+Public PRSETPH358Price As String
+Public PRSETPH358Cost As String
+
+Public PRSETPHF358SKU As String
+Public PRSETPHF358MPN As String
+Public PRSETPHF358Price As String
+Public PRSETPHF358Cost As String
+
+Public PRSETPH469SKU As String
+Public PRSETPH469MPN As String
+Public PRSETPH469Price As String
+Public PRSETPH469Cost As String
+
+Public PRSETPHF469SKU As String
+Public PRSETPHF469MPN As String
+Public PRSETPHF469Price As String
+Public PRSETPHF469Cost As String
+
 Sub ImportFLagData()
 Dim wb As Workbook
 Set wb = Workbooks.Open("S:\Web Site Files\Flags\State Flags\Presentation Sets\State Flag Presentation Set Worksheet.xlsx")
@@ -82,7 +114,7 @@ Set ns = newwb.ActiveSheet
     ns.Cells(1, 69) = "Product Custom Fields"
     'continue
        
-    
+Dim i As Long 'fix
 For i = 1 To range.Rows.Count
 ' range.Rows.Count
     ' Debug.Print (range.Cells(i, 1))
@@ -127,53 +159,53 @@ For i = 1 To range.Rows.Count
     FZ9FtHWPrice = range.Cells(i, 18)
     Dim BaseSKU As String
     BaseSKU = range.Cells(i, 19)
-    Dim PRSETPH357SKU As String
+'    Dim PRSETPH357SKU As String
     PRSETPH357SKU = range.Cells(i, 20)
-    Dim PRSETPH357Cost As String
+'    Dim PRSETPH357Cost As String
     PRSETPH357Cost = range.Cells(i, 21)
-    Dim PRSETPH357Price As String
+'    Dim PRSETPH357Price As String
     PRSETPH357Price = range.Cells(i, 22)
-    Dim PRSETPH357MPN As String
+'    Dim PRSETPH357MPN As String
     PRSETPH357MPN = range.Cells(i, 23)
-    Dim PRSETPHF357SKU As String
+'    Dim PRSETPHF357SKU As String
     PRSETPHF357SKU = range.Cells(i, 24)
-    Dim PRSETPHF357Cost As String
+'    Dim PRSETPHF357Cost As String
     PRSETPHF357Cost = range.Cells(i, 25)
-    Dim PRSETPHF357Price As String
+'    Dim PRSETPHF357Price As String
     PRSETPHF357Price = range.Cells(i, 26)
-    Dim PRSETPHF357MPN As String
+'    Dim PRSETPHF357MPN As String
     PRSETPHF357MPN = range.Cells(i, 27)
-    Dim PRSETPH358SKU As String
+'    Dim PRSETPH358SKU As String
     PRSETPH358SKU = range.Cells(i, 28)
-    Dim PRSETPH358Cost As String
+'    Dim PRSETPH358Cost As String
     PRSETPH358Cost = range.Cells(i, 29)
-    Dim PRSETPH358Price As String
+'    Dim PRSETPH358Price As String
     PRSETPH358Price = range.Cells(i, 30)
-    Dim PRSETPH358MPN As String
+'    Dim PRSETPH358MPN As String
     PRSETPH358MPN = range.Cells(i, 31)
-    Dim PRSETPHF358SKU As String
+'    Dim PRSETPHF358SKU As String
     PRSETPHF358SKU = range.Cells(i, 32)
-    Dim PRSETPHF358Cost As String
+'    Dim PRSETPHF358Cost As String
     PRSETPHF358Cost = range.Cells(i, 33)
-    Dim PRSETPHF358Price As String
+'    Dim PRSETPHF358Price As String
     PRSETPHF358Price = range.Cells(i, 34)
-    Dim PRSETPHF358MPN As String
+'    Dim PRSETPHF358MPN As String
     PRSETPHF358MPN = range.Cells(i, 35)
-    Dim PRSETPH469SKU As String
+'    Dim PRSETPH469SKU As String
     PRSETPH469SKU = range.Cells(i, 36)
-    Dim PRSETPH469Cost As String
+'    Dim PRSETPH469Cost As String
     PRSETPH469Cost = range.Cells(i, 37)
-    Dim PRSETPH469Price As String
+'    Dim PRSETPH469Price As String
     PRSETPH469Price = range.Cells(i, 38)
-    Dim PRSETPH469MPN As String
+'    Dim PRSETPH469MPN As String
     PRSETPH469MPN = range.Cells(i, 39)
-    Dim PRSETPHF469SKU As String
+'    Dim PRSETPHF469SKU As String
     PRSETPHF469SKU = range.Cells(i, 40)
-    Dim PRSETPHF469Cost As String
+'    Dim PRSETPHF469Cost As String
     PRSETPHF469Cost = range.Cells(i, 41)
-    Dim PRSETPHF469Price As String
+'    Dim PRSETPHF469Price As String
     PRSETPHF469Price = range.Cells(i, 42)
-    Dim PRSETPHF469MPN As String
+'    Dim PRSETPHF469MPN As String
     PRSETPHF469MPN = range.Cells(i, 43)
     Dim PRSETPHImage As String
     PRSETPHImage = range.Cells(i, 44)
@@ -199,8 +231,11 @@ Sub ProductRow()
     Dim ns As Worksheet
     Set ns = ActiveSheet
     Dim range As range
-    Set range = ws.range("A3:EM57")
+    'Set range = ws.range("A3:EM57")
+    Set range = ns.range("A3:EM57")  ' fix
+    Dim i As Long ' fix
     For i = 1 To range.Rows.Count
+    
     ' range.Rows.Count
     ' Debug.Print (range.Cells(i, 1))
     Dim ra As Integer
@@ -244,53 +279,53 @@ Sub ProductRow()
     FZ9FtHWPrice = range.Cells(i, 18)
     Dim BaseSKU As String
     BaseSKU = range.Cells(i, 19)
-    Dim PRSETPH357SKU As String
+'    Dim PRSETPH357SKU As String
     PRSETPH357SKU = range.Cells(i, 20)
-    Dim PRSETPH357Cost As String
+'    Dim PRSETPH357Cost As String
     PRSETPH357Cost = range.Cells(i, 21)
-    Dim PRSETPH357Price As String
+'    Dim PRSETPH357Price As String
     PRSETPH357Price = range.Cells(i, 22)
-    Dim PRSETPH357MPN As String
+'    Dim PRSETPH357MPN As String
     PRSETPH357MPN = range.Cells(i, 23)
-    Dim PRSETPHF357SKU As String
+'    Dim PRSETPHF357SKU As String
     PRSETPHF357SKU = range.Cells(i, 24)
-    Dim PRSETPHF357Cost As String
+'    Dim PRSETPHF357Cost As String
     PRSETPHF357Cost = range.Cells(i, 25)
-    Dim PRSETPHF357Price As String
+'    Dim PRSETPHF357Price As String
     PRSETPHF357Price = range.Cells(i, 26)
-    Dim PRSETPHF357MPN As String
+'    Dim PRSETPHF357MPN As String
     PRSETPHF357MPN = range.Cells(i, 27)
-    Dim PRSETPH358SKU As String
+'    Dim PRSETPH358SKU As String
     PRSETPH358SKU = range.Cells(i, 28)
-    Dim PRSETPH358Cost As String
+'    Dim PRSETPH358Cost As String
     PRSETPH358Cost = range.Cells(i, 29)
-    Dim PRSETPH358Price As String
+'    Dim PRSETPH358Price As String
     PRSETPH358Price = range.Cells(i, 30)
-    Dim PRSETPH358MPN As String
+'    Dim PRSETPH358MPN As String
     PRSETPH358MPN = range.Cells(i, 31)
-    Dim PRSETPHF358SKU As String
+'    Dim PRSETPHF358SKU As String
     PRSETPHF358SKU = range.Cells(i, 32)
-    Dim PRSETPHF358Cost As String
+'    Dim PRSETPHF358Cost As String
     PRSETPHF358Cost = range.Cells(i, 33)
-    Dim PRSETPHF358Price As String
+'    Dim PRSETPHF358Price As String
     PRSETPHF358Price = range.Cells(i, 34)
-    Dim PRSETPHF358MPN As String
+'    Dim PRSETPHF358MPN As String
     PRSETPHF358MPN = range.Cells(i, 35)
-    Dim PRSETPH469SKU As String
+'    Dim PRSETPH469SKU As String
     PRSETPH469SKU = range.Cells(i, 36)
-    Dim PRSETPH469Cost As String
+'    Dim PRSETPH469Cost As String
     PRSETPH469Cost = range.Cells(i, 37)
-    Dim PRSETPH469Price As String
+'    Dim PRSETPH469Price As String
     PRSETPH469Price = range.Cells(i, 38)
-    Dim PRSETPH469MPN As String
+'    Dim PRSETPH469MPN As String
     PRSETPH469MPN = range.Cells(i, 39)
-    Dim PRSETPHF469SKU As String
+'    Dim PRSETPHF469SKU As String
     PRSETPHF469SKU = range.Cells(i, 40)
-    Dim PRSETPHF469Cost As String
+'    Dim PRSETPHF469Cost As String
     PRSETPHF469Cost = range.Cells(i, 41)
-    Dim PRSETPHF469Price As String
+'    Dim PRSETPHF469Price As String
     PRSETPHF469Price = range.Cells(i, 42)
-    Dim PRSETPHF469MPN As String
+'    Dim PRSETPHF469MPN As String
     PRSETPHF469MPN = range.Cells(i, 43)
     Dim PRSETPHImage As String
     PRSETPHImage = range.Cells(i, 44)
@@ -305,7 +340,10 @@ Sub ProductRow()
     Dim PageTitle As String
     PageTitle = range.Cells(i, 49)
     Dim Category As String
-    Category = range.Cells(i, 50
+    'Category = range.Cells(i, 50
+    Category = range.Cells(i, 50) ' fix
+    Next ' fix
+    
     'Dim newwb As Workbook
     'Set newwb = Workbooks.Add
     ' newwb.SaveAs ("S:\Web Site Files\Flags\International\Presentation Sets\VBA Output\" + (range.Cells(i, 1)))
@@ -387,7 +425,9 @@ Sub FlagSKUs()
 Dim ns As Worksheet
 Set ns = ActiveSheet
 Dim range As range
-Set range = ws.range("A3:EM57")
+Dim ra As Integer ' fix
+'Set range = ws.range("A3:EM57")
+Set range = ns.range("A3:EM57")
     '12inX18inHG SKU Row 3
     ns.Cells(ra + 3, 1) = "SKU"
     ns.Cells(ra + 3, 2) = ""
@@ -819,13 +859,18 @@ End Sub
 Sub FlagSKURules()
 Dim ns As Worksheet
 Set ns = ActiveSheet
-For i = 1 To range.Rows.Count
+Dim workRange As range
+Set workRange = ns.UsedRange  ' fix, just guessing
+Dim i As Long
+'For i = 1 To range.Rows.Count
+For i = 1 To workRange.Rows.Count  ' fix
 ' range.Rows.Count
     ' Debug.Print (range.Cells(i, 1))
     Dim ra As Integer
     ra = (i - 1) * 18
     Dim range As range
-    Set range = ws.range("A3:EM57")
+'    Set range = ws.range("A3:EM57")
+    Set range = ns.range("A3:EM57")  ' fix
     ' create new file
     Dim state As String
     state = range.Cells(i, 1)
@@ -865,53 +910,53 @@ For i = 1 To range.Rows.Count
     FZ9FtHWPrice = range.Cells(i, 18)
     Dim BaseSKU As String
     BaseSKU = range.Cells(i, 19)
-    Dim PRSETPH357SKU As String
+'    Dim PRSETPH357SKU As String
     PRSETPH357SKU = range.Cells(i, 20)
-    Dim PRSETPH357Cost As String
+'    Dim PRSETPH357Cost As String
     PRSETPH357Cost = range.Cells(i, 21)
-    Dim PRSETPH357Price As String
+'    Dim PRSETPH357Price As String
     PRSETPH357Price = range.Cells(i, 22)
-    Dim PRSETPH357MPN As String
+'    Dim PRSETPH357MPN As String
     PRSETPH357MPN = range.Cells(i, 23)
-    Dim PRSETPHF357SKU As String
+'    Dim PRSETPHF357SKU As String
     PRSETPHF357SKU = range.Cells(i, 24)
-    Dim PRSETPHF357Cost As String
+'    Dim PRSETPHF357Cost As String
     PRSETPHF357Cost = range.Cells(i, 25)
-    Dim PRSETPHF357Price As String
+'    Dim PRSETPHF357Price As String
     PRSETPHF357Price = range.Cells(i, 26)
-    Dim PRSETPHF357MPN As String
+'    Dim PRSETPHF357MPN As String
     PRSETPHF357MPN = range.Cells(i, 27)
-    Dim PRSETPH358SKU As String
+'    Dim PRSETPH358SKU As String
     PRSETPH358SKU = range.Cells(i, 28)
-    Dim PRSETPH358Cost As String
+'    Dim PRSETPH358Cost As String
     PRSETPH358Cost = range.Cells(i, 29)
-    Dim PRSETPH358Price As String
+'    Dim PRSETPH358Price As String
     PRSETPH358Price = range.Cells(i, 30)
-    Dim PRSETPH358MPN As String
+'    Dim PRSETPH358MPN As String
     PRSETPH358MPN = range.Cells(i, 31)
-    Dim PRSETPHF358SKU As String
+'    Dim PRSETPHF358SKU As String
     PRSETPHF358SKU = range.Cells(i, 32)
-    Dim PRSETPHF358Cost As String
+'    Dim PRSETPHF358Cost As String
     PRSETPHF358Cost = range.Cells(i, 33)
-    Dim PRSETPHF358Price As String
+'    Dim PRSETPHF358Price As String
     PRSETPHF358Price = range.Cells(i, 34)
-    Dim PRSETPHF358MPN As String
+'    Dim PRSETPHF358MPN As String
     PRSETPHF358MPN = range.Cells(i, 35)
-    Dim PRSETPH469SKU As String
+'    Dim PRSETPH469SKU As String
     PRSETPH469SKU = range.Cells(i, 36)
-    Dim PRSETPH469Cost As String
+'    Dim PRSETPH469Cost As String
     PRSETPH469Cost = range.Cells(i, 37)
-    Dim PRSETPH469Price As String
+'    Dim PRSETPH469Price As String
     PRSETPH469Price = range.Cells(i, 38)
-    Dim PRSETPH469MPN As String
+'    Dim PRSETPH469MPN As String
     PRSETPH469MPN = range.Cells(i, 39)
-    Dim PRSETPHF469SKU As String
+'    Dim PRSETPHF469SKU As String
     PRSETPHF469SKU = range.Cells(i, 40)
-    Dim PRSETPHF469Cost As String
+'    Dim PRSETPHF469Cost As String
     PRSETPHF469Cost = range.Cells(i, 41)
-    Dim PRSETPHF469Price As String
+'    Dim PRSETPHF469Price As String
     PRSETPHF469Price = range.Cells(i, 42)
-    Dim PRSETPHF469MPN As String
+'    Dim PRSETPHF469MPN As String
     PRSETPHF469MPN = range.Cells(i, 43)
     Dim PRSETPHImage As String
     PRSETPHImage = range.Cells(i, 44)
@@ -1352,5 +1397,5 @@ For i = 1 To range.Rows.Count
     ns.Cells(ra + 12, 67) = ""
     ns.Cells(ra + 12, 68) = ""
     ns.Cells(ra + 12, 69) = ""
-    
+Next ' fix
 End Sub
